@@ -15,4 +15,4 @@ eg: `aws configure --profile jeff`
 
 #Running
 
-`pipenv run python snapster/instancedata.py`
+`pipenv run python snapster/snapster.py`
