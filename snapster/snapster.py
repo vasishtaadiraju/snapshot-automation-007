@@ -1,4 +1,5 @@
 import boto3
+import botocore
 import click
 
 session = boto3.Session(profile_name='vamos')
@@ -141,8 +142,11 @@ def stop_instances(project):
 
     for i in instances:
         print("Stopping {0}..".format(i,id))
-        i.stop()
-
+        try:
+            i.stop()
+        except botocore.exceptions.ClientError as e:
+            print(" Could not stop as instance is in pending state  {0} ".format(i.id) + str(e))
+            continue
     return
 
 @instances.command('start')
@@ -155,8 +159,11 @@ def start_instances(project):
 
     for i in instances:
         print("Starting {0}..".format(i,id))
-        i.start()
-
+        try:
+            i.start()
+        except botocore.exceptions.ClientError as e:
+            print(" Could not start as instance is in stopping state  {0} ".format(i.id) + str(e))
+            continue
     return
 
 @instances.command('terminate')
