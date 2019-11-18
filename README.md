@@ -15,4 +15,12 @@ eg: `aws configure --profile jeff`
 
 #Running
 
-`pipenv run python snapster/snapster.py`
+`pipenv run python snapster/snapster.py <command>
+<--project=PROJECT>`
+
+#Help Command
+
+`pipenv run python snapster/snapster.py --help`
+
+*commands are list, start, stop, terminate
+*project is optional
