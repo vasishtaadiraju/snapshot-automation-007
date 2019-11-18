@@ -15,7 +15,8 @@ def list_instances():
         i.state['Name'],
         i.public_dns_name,
         i.architecture,
-        i.hypervisor
+        i.hypervisor,
+        i.image_id
         )))
 
     return
